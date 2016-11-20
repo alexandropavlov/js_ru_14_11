@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Comments from './Comments'
 
 class Article extends Component {
 
@@ -12,7 +13,8 @@ class Article extends Component {
 
     render() {
         const { article } = this.props
-        const body = this.state.isOpen ? <p>{article.text}</p> : null
+        const articleBody = <div><p>{article.text}</p><Comments comments={article.comments}/></div>
+        const body = this.state.isOpen ? articleBody : null
         return (
             <section>
                 <h3 onClick = {this.handleClick}>{article.title}</h3>
