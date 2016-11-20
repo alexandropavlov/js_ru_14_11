@@ -12,12 +12,14 @@ class Comments extends Component {
 
     render() {
         const { comments } = this.props;
+	    // !!commens.length сюда же
         const hasComments = !!comments;
         let commentsItems;
         let body = null;
 
         if (hasComments) {
         	commentsItems = comments.map(comment => {
+			//лучше вынести Comment в отдельный компонент
         		return (
 	        		<li key = {comment.id}>
 	        			<h4>{comment.user}</h4>
