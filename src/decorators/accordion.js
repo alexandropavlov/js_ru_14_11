@@ -14,6 +14,7 @@ export default (Component) => class Accordion extends React.Component {
     }
 
     createToggleOpen = id => ev => {
+        //Хорошо, но я предпочитаю тернарным оператором писать вместо 2-х setState
         if (this.state.openItemId == id) {
             this.setState({
                 openItemId: null
