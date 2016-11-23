@@ -21,6 +21,7 @@ Article.propTypes = {
 
 function getBody(props) {
     const { article, isOpen } = props
+
     if (!isOpen) return null
     return (
         <div>
