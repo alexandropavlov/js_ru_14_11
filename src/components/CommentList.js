@@ -95,14 +95,14 @@ class CommentList extends Component {
                 <input
                     style={{display: "block"}}
                     type="submit"
-                    onClick={this.handleAddComment }
+                    onClick={this.handleAddComment}
                 />
             </form>
         )
     }
 
     handleChange (name, e) {
-        let change = this.state.newComment;
+        let change = Object.assign({}, this.state.newComment);
         change[name] = e.target.value;
         this.setState({
             newComment: change
