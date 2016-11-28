@@ -102,6 +102,8 @@ class CommentList extends Component {
     }
 
     handleChange (name, e) {
+        //очень неприятная практика, лучше делать стейт плоским
+        //а ддля этого лучше вынести форму в отдельный компонент
         let change = Object.assign({}, this.state.newComment);
         change[name] = e.target.value;
         this.setState({
