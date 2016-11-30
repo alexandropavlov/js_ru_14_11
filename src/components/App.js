@@ -10,11 +10,6 @@ import { connect } from 'react-redux'
 
 class App extends Component {
 
-    componentWillReceiveProps(nextProps) {
-        console.log('app props (compWillResProps)', nextProps)
-    }
-
-
     render() {
         const { articles, select } = this.props
 
@@ -35,9 +30,7 @@ class App extends Component {
 
     handleChange = selected => {
         const { selectUpdate } = this.props
-        console.log('selected', selected);
         selectUpdate(selected)
-        
     }
 }
 

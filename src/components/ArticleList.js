@@ -33,10 +33,8 @@ class ArticleList extends Component {
         this.containerRef = ref
     }
 
-
-    render() {
-        const { articles, isOpen, toggleOpenItem, select } = this.props
-
+    filterArticlesBySelect(articles) {
+        const { select } = this.props
         let filteredArticles = null
 
         if (select.length) {
@@ -54,7 +52,25 @@ class ArticleList extends Component {
             filteredArticles = articles;
         }
 
+        return filteredArticles
+    }
 
+    filterArticlesByDateRange(articles) {
+        const { dateRange } = this.props
+
+        if (dateRange.from === null || dateRange.to === null) {
+            return articles
+        }
+
+        return articles.filter(article => {
+            return Date.parse(article.date) >= Date.parse(dateRange.from) && Date.parse(article.date) <= Date.parse(dateRange.to)
+        })
+    }
+
+
+    render() {
+        const { articles, isOpen, toggleOpenItem } = this.props
+        const filteredArticles = this.filterArticlesByDateRange(this.filterArticlesBySelect(articles))
 
         const articleItems = filteredArticles.map(article => (
             <li key = {article.id}>
@@ -76,5 +92,6 @@ class ArticleList extends Component {
 
 export default connect(state => ({
     articles: state.articles,
-    select: state.select
+    select: state.select,
+    dateRange: state.dateRange
 }))(accordion(ArticleList))
