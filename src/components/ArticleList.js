@@ -70,6 +70,7 @@ class ArticleList extends Component {
 
     render() {
         const { articles, isOpen, toggleOpenItem } = this.props
+        //лучше эту логику вынести в connect
         const filteredArticles = this.filterArticlesByDateRange(this.filterArticlesBySelect(articles))
 
         const articleItems = filteredArticles.map(article => (
