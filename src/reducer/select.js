@@ -5,7 +5,7 @@ export default (selectState = [], action) => {
 
     switch (type) {
     	case SELECT_UPDATE:
-    		return payload.selected
+    		return payload.selected.slice()
     }
 
     return selectState
