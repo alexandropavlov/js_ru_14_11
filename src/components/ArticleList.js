@@ -35,9 +35,28 @@ class ArticleList extends Component {
 
 
     render() {
-        const { articles, isOpen, toggleOpenItem } = this.props
+        const { articles, isOpen, toggleOpenItem, select } = this.props
 
-        const articleItems = articles.map(article => (
+        let filteredArticles = null
+
+        if (select.length) {
+            filteredArticles = articles.filter(article => {
+                let res = false
+                select.forEach((item) => {
+                    console.log(item, article);
+                    if (item.value === article.id) {
+                        res = true
+                    }
+                })
+                return res
+            })
+        } else {
+            filteredArticles = articles;
+        }
+
+
+
+        const articleItems = filteredArticles.map(article => (
             <li key = {article.id}>
                 <Article
                     article = {article}
@@ -56,5 +75,6 @@ class ArticleList extends Component {
 }
 
 export default connect(state => ({
-    articles: state.articles
+    articles: state.articles,
+    select: state.select
 }))(accordion(ArticleList))
