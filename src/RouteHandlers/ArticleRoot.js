@@ -3,7 +3,7 @@ import ArticleList from '../components/ArticleList'
 
 class ArticleRoot extends Component {
     static propTypes = {
-
+        
     };
 
     render() {
