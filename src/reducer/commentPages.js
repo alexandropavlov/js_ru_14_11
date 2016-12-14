@@ -7,6 +7,9 @@ const defaultState = {
     total: null
 }
 
+//Я б хранил это в основном редюсере комментов. 
+//+ Хнарил бы только id по номеру страницы, а семи комменты в entities, ведь им не важно как их достали, важно что это за сущность
+//+ Лучше бы здесь тоже immutable использовать, а то неконсистентные данные - зло
 export default (commentPages = defaultState, action) => {
     const { type, payload, response } = action
 
